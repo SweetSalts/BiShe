@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C2C2C2"
+    android:orientation="vertical" >
+    <TableLayout
+        android:id="@+id/tl_base_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:stretchColumns="1" >
+
+        <TextView
+            android:id="@+id/tv_base_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="@android:color/background_light"
+            android:gravity="center"
+            android:text="基本信息"
+            android:textSize="18sp" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_baseName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:background="@android:color/background_light"
+                android:text="名称:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_baseName1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="baishu"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_basePosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/background_light"
+                android:text="地点:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_basePosition1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0.5dp"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="baishu"
+                android:textSize="16sp" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/tv_update"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@android:color/background_light"
+        android:gravity="right" />
+
+    <TableLayout
+        android:id="@+id/tl_base_chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tv_base_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="@android:color/background_light"
+            android:gravity="center"
+            android:text="图表信息"
+            android:textSize="18sp" />
+
+        <TableRow>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/fx_bg" />
+
+                <ImageView
+                    android:id="@+id/iv_arraw"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/arraw" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:text="风向(°)"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/taavg_bg" />
+
+                <ProgressBar
+                    android:id="@+id/vpb_taAvg"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="5dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="3dp"
+                    android:max="150"
+                    android:progressDrawable="@drawable/progressbar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|bottom"
+                    android:text="环温(℃)"
+                    android:textSize="12sp" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/rhavg_bg" />
+
+                <ProgressBar
+                    android:id="@+id/vpb_rhAvg"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="15dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="3dp"
+                    android:max="100"
+                    android:progressDrawable="@drawable/progressbar1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|top"
+                    android:text="环湿(%RH)"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/rhavg_bg" />
+
+                <ProgressBar
+                    android:id="@+id/vpb_rainPot"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="15dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="3dp"
+                    android:max="100"
+                    android:progressDrawable="@drawable/progressbar2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|top"
+                    android:text="雨量(mm)"
+                    android:textSize="12sp" />
+            </FrameLayout>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tl_basetable_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp" >
+
+        <TextView
+            android:id="@+id/tv_basedata_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="@android:color/background_light"
+            android:gravity="center"
+            android:text="详细数据"
+            android:textSize="18sp" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_taAvg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="空气温度(℃)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_taAvg1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_taSoilAvg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="土壤温度(℃)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_taSoilAvg1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_rhAvg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="空气湿度(%RH)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_rhAvg1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_vwcAvg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="土壤湿度(%RH)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_vwcAvg1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_rainTot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="累积降雨量(mm)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_rainTot1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_pvaporAvg"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="水汽压"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_pvaporAvg1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_wd"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="风向(o)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_wd1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_wsAvg"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="风速(m/s)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_wsAvg1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_slrwAvg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="总辐射(W/m2)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_slrwAvg1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_ptemp"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="数采面板温度"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_ptemp1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_battVoltMin"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="电池电压最小值"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_battVoltMin1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:text="N/A"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1.2"
+                android:background="@android:color/background_light"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

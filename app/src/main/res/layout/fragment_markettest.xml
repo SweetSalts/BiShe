@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="7"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="陕西地区实时价格："
+            android:layout_columnSpan="6"
+            android:id="@+id/fragment_market_toptext"
+            android:textSize="15dp"
+            android:layout_row="0"
+            android:layout_column="1" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_columnSpan="6"
+            android:id="@+id/fragment_spinner_select"
+            android:layout_row="1"
+            android:layout_column="1" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:background="@color/salmon"
+            android:text="洛川:3.5元/斤"
+            android:id="@+id/textView1"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_columnSpan="6"
+            android:layout_row="2"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:background="@color/yellow"
+            android:text="白水:3.0元/斤"
+            android:id="@+id/textView2"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_columnSpan="6"
+            android:layout_row="3"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:background="@color/lightgreen"
+            android:text="旬邑:2.6元/斤"
+            android:id="@+id/textView3"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_columnSpan="6"
+            android:layout_row="4"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:background="@color/skyblue"
+            android:text="礼泉:2.10元/斤"
+            android:id="@+id/textView4"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_columnSpan="6"
+            android:layout_row="5"
+            android:layout_column="1" />
+
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全国主产区价格快讯："
+            android:layout_columnSpan="5"
+            android:id="@+id/fragment_market_secondtext"
+            android:textSize="30sp"
+            android:layout_row="6"
+            android:layout_column="0" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="品种"
+            android:id="@+id/textView11"
+            android:textSize="15sp"
+            android:background="@drawable/shape"
+            android:layout_row="7"
+            android:textStyle="bold"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="规     格"
+            android:textSize="15sp"
+            android:id="@+id/textView12"
+            android:background="@drawable/shape"
+            android:layout_row="7"
+            android:textStyle="bold"
+            android:layout_column="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="市场"
+            android:background="@drawable/shape"
+            android:textSize="15sp"
+            android:id="@+id/textView13"
+            android:layout_row="7"
+            android:textStyle="bold"
+            android:layout_column="3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 最新价格"
+            android:textSize="15sp"
+            android:id="@+id/textView14"
+            android:layout_row="7"
+            android:background="@drawable/shape"
+            android:textStyle="bold"
+            android:layout_column="4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布日期"
+            android:textSize="15sp"
+            android:id="@+id/textView15"
+            android:background="@drawable/shape"
+            android:layout_row="7"
+            android:textStyle="bold"
+            android:layout_column="5" />
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="嘎啦"
+            android:textSize="15sp"
+            android:id="@+id/textView21"
+            android:layout_row="8"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="70#-75#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView22"
+            android:layout_row="8"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海"
+            android:textSize="15sp"
+            android:id="@+id/textView23"
+            android:layout_row="8"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.80元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView24"
+            android:layout_row="8"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/21"
+            android:textSize="15sp"
+            android:id="@+id/textView25"
+            android:layout_row="8"
+            android:layout_column="5" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="嘎啦"
+            android:textSize="15sp"
+            android:id="@+id/textView31"
+            android:layout_row="9"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="75#-80#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView32"
+            android:layout_row="9"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海"
+            android:textSize="15sp"
+            android:id="@+id/textView33"
+            android:layout_row="9"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.80元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView34"
+            android:layout_row="9"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/21"
+            android:textSize="15sp"
+            android:id="@+id/textView35"
+            android:layout_row="9"
+            android:layout_column="5" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="富士"
+            android:textSize="15sp"
+            android:id="@+id/textView41"
+            android:layout_row="10"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="80#-85#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView42"
+            android:layout_row="10"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海"
+            android:textSize="15sp"
+            android:id="@+id/textView43"
+            android:layout_row="10"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.30元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView44"
+            android:layout_row="10"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/19"
+            android:textSize="15sp"
+            android:id="@+id/textView45"
+            android:layout_row="10"
+            android:layout_column="5" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="嘎啦"
+            android:textSize="15sp"
+            android:id="@+id/textView51"
+            android:layout_row="11"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="75#-80#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView52"
+            android:layout_row="11"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日照"
+            android:textSize="15sp"
+            android:id="@+id/textView53"
+            android:layout_row="11"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.80元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView54"
+            android:layout_row="11"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/19"
+            android:textSize="15sp"
+            android:id="@+id/textView55"
+            android:layout_row="11"
+            android:layout_column="5" />
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="嘎啦"
+            android:textSize="15sp"
+            android:id="@+id/textView61"
+            android:layout_row="12"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="70#-75#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView62"
+            android:layout_row="12"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日照"
+            android:textSize="15sp"
+            android:id="@+id/textView63"
+            android:layout_row="12"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.80元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView64"
+            android:layout_row="12"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/19"
+            android:textSize="15sp"
+            android:id="@+id/textView65"
+            android:layout_row="12"
+            android:layout_column="5" />
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="富士"
+            android:textSize="15sp"
+            android:id="@+id/textView71"
+            android:layout_row="13"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="75#-80#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView72"
+            android:layout_row="13"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日照"
+            android:textSize="15sp"
+            android:id="@+id/textView73"
+            android:layout_row="13"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.90元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView74"
+            android:layout_row="13"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/19"
+            android:textSize="15sp"
+            android:id="@+id/textView75"
+            android:layout_row="13"
+            android:layout_column="5" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="富士"
+            android:textSize="15sp"
+            android:id="@+id/textView81"
+            android:layout_row="14"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="75#-80#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView82"
+            android:layout_row="14"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="淄博"
+            android:textSize="15sp"
+            android:id="@+id/textView83"
+            android:layout_row="14"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.75元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView84"
+            android:layout_row="14"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/19"
+            android:textSize="15sp"
+            android:id="@+id/textView85"
+            android:layout_row="14"
+            android:layout_column="5" />
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="富士"
+            android:textSize="15sp"
+            android:id="@+id/textView91"
+            android:layout_row="15"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="75#-80#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView92"
+            android:layout_row="15"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重庆"
+            android:textSize="15sp"
+            android:id="@+id/textView93"
+            android:layout_row="15"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.15元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView94"
+            android:layout_row="15"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/19"
+            android:textSize="15sp"
+            android:id="@+id/textView95"
+            android:layout_row="15"
+            android:layout_column="5" />
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="富士"
+            android:textSize="15sp"
+            android:id="@+id/textView101"
+            android:layout_row="16"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="80#-85#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView102"
+            android:layout_row="16"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重庆"
+            android:textSize="15sp"
+            android:id="@+id/textView103"
+            android:layout_row="16"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.50元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView104"
+            android:layout_row="16"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/19"
+            android:textSize="15sp"
+            android:id="@+id/textView105"
+            android:layout_row="16"
+            android:layout_column="5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="嘎啦"
+            android:textSize="15sp"
+            android:id="@+id/textView111"
+            android:layout_row="17"
+            android:layout_column="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="75#-80#"
+            android:textSize="15sp"
+
+            android:id="@+id/textView112"
+            android:layout_row="17"
+            android:layout_column="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海"
+            android:textSize="15sp"
+            android:id="@+id/textView113"
+            android:layout_row="17"
+            android:layout_column="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.30元/斤"
+            android:textSize="15sp"
+            android:id="@+id/textView114"
+            android:layout_row="17"
+
+            android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/7/19"
+            android:textSize="15sp"
+            android:id="@+id/textView115"
+            android:layout_row="17"
+            android:layout_column="5" />
+
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_row="18"
+            android:background="@drawable/market"
+            android:layout_columnSpan="7"
+            android:layout_column="0" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:text=" "
+            android:layout_columnSpan="6"
+            android:id="@+id/fragment_market_secondtext1"
+            android:textSize="25sp"
+            android:layout_row="19"
+            android:layout_column="1" />
+
+
+    </GridLayout>
+</ScrollView>

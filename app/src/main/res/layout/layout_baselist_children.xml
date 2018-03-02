@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:id="@+id/BaseCellBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cell_01" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:padding="10dip" >
+
+        <ImageView
+            android:id="@+id/iv_baseImg"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/base" />
+
+        <TextView
+            android:id="@+id/tv_baseName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dip"
+            android:layout_marginTop="15dip"
+            android:layout_weight="1"
+            android:text="基地名" />
+
+        <TextView
+            android:id="@+id/tv_basePosition"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="TextView" />
+    </LinearLayout>
+</FrameLayout>

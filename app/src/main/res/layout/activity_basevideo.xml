@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C2C2C2"
+    android:orientation="vertical" >
+    <TableLayout
+        android:id="@+id/tl_base_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:stretchColumns="1" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="@android:color/background_light"
+            android:gravity="center"
+            android:text="基本信息"
+            android:textSize="18sp" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:background="@android:color/background_light"
+                android:text="名称:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_baseName2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/background_light"
+                android:text="地点:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_basePosition2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow android:background="@android:color/background_light" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="选择相机位置:"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/sp_choose_camera_position"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="0.5dp" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tl_base_chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="@android:color/background_light"
+            android:gravity="center"
+            android:text="实时视频"
+            android:textSize="18sp" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="270dp" >
+
+            <ImageView
+                android:id="@+id/iv_videoview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#00000000"
+                android:onClick="setFullButton" />
+
+            <ImageButton
+                android:id="@+id/ib_fullVideo"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|bottom"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/full_screen"
+                android:visibility="invisible" />
+        </FrameLayout>
+    </TableLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@android:color/background_light" >
+
+        <TextView
+            android:id="@+id/tv_basedata_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="1dp"
+            android:text="相机控制区"
+            android:textSize="18sp" />
+
+        <ToggleButton
+            android:id="@+id/tb_switch_video"
+            style="@style/Base.V7.Theme.AppCompat.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:checked="false" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/background_light" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1.5" >
+
+            <ImageButton
+                android:id="@+id/ib_stop"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/stop" />
+
+            <ImageButton
+                android:id="@+id/ib_up"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_above="@+id/ib_stop"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/up" />
+
+            <ImageButton
+                android:id="@+id/ib_down"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/ib_stop"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/down" />
+
+            <ImageButton
+                android:id="@+id/ib_left"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/ib_stop"
+                android:src="@drawable/left" />
+
+            <ImageButton
+                android:id="@+id/ib_right"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/ib_stop"
+                android:src="@drawable/right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2" >
+
+            <ImageButton
+                android:id="@+id/ib_focusadd"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/fangda" />
+
+            <ImageButton
+                android:id="@+id/ib_focussub"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/ib_focusadd"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/suoxiao" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone='yes' ?>
+<resources>
+       <!--<string name="userName"></string>-->
+        <!--<string name="password"></string>-->
+        <integer name="minNewsID">0</integer>
+        <integer name="minNoticeID">0</integer>
+        <bool name="ISCHECK">false</bool>
+        <bool name="AUTO_ISCHECK">false</bool>
+        <bool name="CONNECT">false</bool>
+</resources>

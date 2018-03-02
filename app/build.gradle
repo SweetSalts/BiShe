@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+        buildToolsVersion '25.0.0'
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+
+    defaultConfig {
+            applicationId "me.itangqi.buildingblocks"
+            minSdkVersion 18
+            targetSdkVersion 20
+            versionCode 60
+            versionName "0.9.4"
+            multiDexEnabled true
+        }
+    buildTypes {
+
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+
+    }
+}
+
+dependencies {
+    provided fileTree(include: ['*.jar'], dir: 'libs')
+    // Google Play Services
+    compile 'com.google.android.gms:play-services-location:7.5.0'
+    // Support Libraries
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:cardview-v7:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
+    // The third party
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.soundcloud.android:android-crop:1.0.0@aar'
+    compile 'com.loopj.android:android-async-http:1.4.8'
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
+    compile files('src/main/lib/1_6XDevSDK_1.29_beta.jar')
+    compile files('src/main/lib/armeabi.jar')
+    compile files('src/main/lib/V5KF_withMap_1.1.7_r160729.jar')
+    //compile 'com.github.bumptech.glide:glide:3.7.0'
+    //compile 'com.google.code.gson:gson:2.3.1'
+    compile project(':library')
+    compile project(':upgrade')
+    compile project(':androidFine')
+    compile 'com.orhanobut:logger:2.1.1'
+}

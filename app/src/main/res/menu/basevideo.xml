@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_addCamera"
+        android:title="@string/action_addcamera"
+        />
+    //app:showAsAction="never"
+    <item
+        android:id="@+id/action_deleteCamera"
+        android:title="@string/action_delcamera"
+        />
+    //app:showAsAction="never"
+
+</menu>
