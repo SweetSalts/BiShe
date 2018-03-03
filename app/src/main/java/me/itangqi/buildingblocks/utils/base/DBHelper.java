@@ -16,11 +16,11 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TB_NAME_CAMERA = "cameraInfoTb";
     private static final String EXEC = "create table "
             + TB_NAME_BASE
-            + " (_baseid integer primary key,basename varchar(80),baseposition varchar(80),basecode varchar(20),isshanxi integer)";
+            + " (_baseid integer primary key,basename varchar(80),baseposition varchar(80),basecode varchar(20),latitude double,longitude double,isshanxi integer)";
     private static final String EXEC1 = "create table "
             + TB_NAME_CAMERA
             + " (_cameraid integer primary key,cameraposition varchar(80),basecode varchar(20),ip varchar(20),port integer)";
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
     private SQLiteDatabase database;
 
     public DBHelper(Context context) {
@@ -77,6 +77,12 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.query(TB_NAME_CAMERA, null, "basecode =" + "'"
                 + basecode + "'", null, null, null, null);
+        return cursor;
+    }
+
+    public Cursor queryAll(){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.query(TB_NAME_BASE, null, null, null, null, null, null);
         return cursor;
     }
 
