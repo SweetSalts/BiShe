@@ -31,12 +31,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        sourceSets {
-            main {
-                jniLibs.srcDirs = ['libs']
-            }
-        }
 
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 }
 
@@ -63,4 +61,5 @@ dependencies {
     compile project(':upgrade')
     compile project(':androidFine')
     compile 'com.orhanobut:logger:2.1.1'
+    compile files('libs/BaiduLBS_Android.jar')
 }

@@ -1,15 +1,11 @@
 package me.itangqi.buildingblocks.ui.fragment;
 
-import android.Manifest;
 import android.app.Dialog;
-import android.app.Fragment;
 import android.content.ContentValues;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,10 +25,10 @@ import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
-import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 
 import java.util.ArrayList;
@@ -54,7 +50,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     private BaseInfo baseInfo;
 
     //控件
-    private TextureMapView mMapView;
+    private MapView mMapView;
     private BaiduMap mBaiduMap;
     private Dialog addDialog, delDialog;
     EditText baseName, baseName1, basePosition, baseCode, baseLatitude, baseLongitude;
@@ -65,54 +61,13 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getActivity().getApplicationContext());
-
-        //申请权限
-        List<String> permissionList = new ArrayList<>();
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission
-                .ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
-        }
-
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.
-                READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            permissionList.add(Manifest.permission.READ_PHONE_STATE);
-        }
-
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.
-                WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        }
-        if (!permissionList.isEmpty()) {
-            String[] permissions = permissionList.toArray(new String[permissionList.size()]);
-            ActivityCompat.requestPermissions(getActivity(), permissions, 1);
-        }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case 1:
-                if (grantResults.length > 0) {
-                    for (int result : grantResults) {
-                        if (result != PackageManager.PERMISSION_GRANTED) {
-                            Toast.makeText(getActivity(), "必须同意所有权限才能使用本程序", Toast.LENGTH_SHORT).show();
-                            getActivity().finish();
-                            return;
-                        }
-                    }
-                } else {
-                    Toast.makeText(getActivity(), "发生未知错误", Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
-                }
-                break;
-            default:
-        }
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        SDKInitializer.initialize(getActivity().getApplicationContext());
         v = inflater.inflate(R.layout.fragment_base, container, false);
         //初始化地图
         initView();
@@ -165,7 +120,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView() {
-        mMapView = (TextureMapView) v.findViewById(R.id.bmapView);
+        mMapView = (MapView) v.findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);
         mBaiduMap.setMapStatus(msu);
@@ -352,6 +307,9 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
         //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
         mMapView.onDestroy();
     }

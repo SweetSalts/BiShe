@@ -31,7 +31,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.itangqi.buildingblocks.R;
 import me.itangqi.buildingblocks.ui.activity.base.BaseActivity;
-import me.itangqi.buildingblocks.ui.fragment.BaseList;
+import me.itangqi.buildingblocks.ui.fragment.BaseFragment;
 import me.itangqi.buildingblocks.ui.fragment.MarketFragment;
 import me.itangqi.buildingblocks.ui.fragment.NongjifuwuListFragment;
 import me.itangqi.buildingblocks.ui.fragment.NoticeListFragment;
@@ -265,8 +265,8 @@ public class MainActivity extends BaseActivity {
                 case 1:
                     newFragment = new MarketFragment();
                     break;
-                case 2:
-                    newFragment = new BaseList();
+            case 2:
+                    newFragment = new BaseFragment();
                     break;
                 case 3:
                     newFragment = new NongjifuwuListFragment();

@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.baidu.mapapi.map.TextureMapView
+    <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,12 +54,16 @@
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="vertical">
-                <Spinner
+                android:orientation="horizontal">
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:entries="@array/info">
-                </Spinner>
+                    android:text="田间监测数据"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="现场生产视频"/>
             </LinearLayout>
 
         </RelativeLayout>
