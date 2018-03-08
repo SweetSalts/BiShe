@@ -16,11 +16,11 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TB_NAME_CAMERA = "cameraInfoTb";
     private static final String EXEC = "create table "
             + TB_NAME_BASE
-            + " (_baseid integer primary key,basename varchar(80),baseposition varchar(80),basecode varchar(20),latitude double,longitude double,isshanxi integer)";
+            + " (_baseid integer primary key,basename varchar(80),baseposition varchar(80),basecode varchar(20),isshanxi integer)";
     private static final String EXEC1 = "create table "
             + TB_NAME_CAMERA
             + " (_cameraid integer primary key,cameraposition varchar(80),basecode varchar(20),ip varchar(20),port integer)";
-    private static final int VERSION = 2;
+    private static final int VERSION = 3;
     private SQLiteDatabase database;
 
     public DBHelper(Context context) {
@@ -97,6 +97,15 @@ public class DBHelper extends SQLiteOpenHelper {
         return basecode;
     }
 
+    //通过示范站代码为示范站添加经纬度
+    public void addJWDByBaseCode(String baseCode, double latitude, double longitude){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("latitude", latitude);
+        values.put("longitude", longitude);
+        db.update(TB_NAME_BASE, values, "baseCode = ?", new String[]{baseCode});
+    }
+
     public void close() {
         if (database != null)
             database.close();
@@ -105,6 +114,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        //升级数据库，添加了经纬度
+        db.execSQL("ALTER TABLE baseInfoTb ADD latitude double;");
+        db.execSQL("ALTER TABLE baseInfoTb ADD longitude double;");
     }
 }

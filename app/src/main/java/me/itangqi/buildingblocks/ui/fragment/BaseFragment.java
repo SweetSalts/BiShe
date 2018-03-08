@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -48,10 +49,12 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     private View v;
     private DBHelper dbHelper;
     private BaseInfo baseInfo;
+    private List<BaseInfo> infos;
 
     //控件
     private MapView mMapView;
     private BaiduMap mBaiduMap;
+    private FloatingActionButton fb;
     private Dialog addDialog, delDialog;
     EditText baseName, baseName1, basePosition, baseCode, baseLatitude, baseLongitude;
     //覆盖物相关
@@ -73,6 +76,10 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
         initView();
         //初始化实验站位置
         initMaker();
+        //初始化数据
+        initData();
+
+        showBase();
         //监听点击事件
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
@@ -81,6 +88,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
                 BaseInfo info = (BaseInfo) extraInfo.getSerializable("info");
                 ImageView iv = (ImageView) mMakerLy.findViewById(R.id.id_info_img);
                 TextView name = (TextView) mMakerLy.findViewById(R.id.id_info_name);
+                fb = (FloatingActionButton) getActivity().findViewById(R.id.fab);
 
                 iv.setImageResource(R.mipmap.nanxiao);
                 name.setText(info.getBaseName());
@@ -96,6 +104,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
 
                 mBaiduMap.showInfoWindow(infoWindow);
                 mMakerLy.setVisibility(View.VISIBLE);
+                fb.setVisibility(View.GONE);
                 return true;
             }
         });
@@ -103,6 +112,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onMapClick(LatLng latLng) {
                 mMakerLy.setVisibility(View.GONE);
+                fb.setVisibility(View.VISIBLE);
                 mBaiduMap.hideInfoWindow();
             }
 
@@ -112,6 +122,32 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
             }
         });
         return v;
+    }
+
+    private void initData() {
+        infos = new ArrayList<>();
+        dbHelper = new DBHelper(getActivity().getApplicationContext());
+        dbHelper.addJWDByBaseCode("meixian", 107.996799, 34.122927);
+        Cursor cursor = null;
+        cursor = dbHelper.queryAll();
+        while (cursor.moveToNext()) {
+            baseInfo = new BaseInfo();
+            baseInfo.setBaseName(cursor.getString(cursor
+                    .getColumnIndex("basename")));
+            baseInfo.setBasePosition(cursor.getString(cursor
+                    .getColumnIndex("baseposition")));
+            baseInfo.setBaseCode(cursor.getString(cursor
+                    .getColumnIndex("basecode")));
+            baseInfo.setLatitude(cursor.getDouble(cursor
+                    .getColumnIndex("latitude")));
+            baseInfo.setLongitude(cursor.getDouble(cursor
+                    .getColumnIndex("longitude")));
+            //Log.v("BaseInfo", baseInfo.toString());
+            if(cursor.getDouble(cursor.getColumnIndex("latitude")) != 0){
+                infos.add(baseInfo);
+            }
+        }
+        dbHelper.close();
     }
 
     private void initMaker() {
@@ -132,29 +168,12 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
 
     private void showBase() {
         mBaiduMap.clear();
-        List<BaseInfo> infos = new ArrayList<>();
-        Cursor cursor = null;
-        cursor = dbHelper.queryAll();
-        while (cursor.moveToNext()) {
-            baseInfo = new BaseInfo();
-            baseInfo.setBaseName(cursor.getString(cursor
-                    .getColumnIndex("basename")));
-            baseInfo.setBasePosition(cursor.getString(cursor
-                    .getColumnIndex("baseposition")));
-            baseInfo.setBaseCode(cursor.getString(cursor
-                    .getColumnIndex("basecode")));
-            baseInfo.setLatitude(cursor.getDouble(cursor
-                    .getColumnIndex("latitude")));
-            baseInfo.setLongitude(cursor.getDouble(cursor
-                    .getColumnIndex("longitude")));
-            infos.add(baseInfo);
-        }
         LatLng latlng = null;
         Marker marker = null;
         OverlayOptions options;
         for (BaseInfo info : infos) {
             //经纬度
-            latlng = new LatLng(info.getLatitude(), info.getLongitude());
+            latlng = new LatLng(info.getLongitude(), info.getLatitude());
             //图标
             options = new MarkerOptions()
                     .position(latlng)
