@@ -2,12 +2,16 @@ package me.itangqi.buildingblocks.ui.fragment;
 
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +40,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.itangqi.buildingblocks.R;
+import me.itangqi.buildingblocks.ui.activity.BaseDataActivity;
+import me.itangqi.buildingblocks.ui.activity.base.BaseVideoActivity;
 import me.itangqi.buildingblocks.utils.base.BaseInfo;
 import me.itangqi.buildingblocks.utils.base.DBHelper;
 import me.itangqi.buildingblocks.utils.base.ValueUtils;
@@ -57,6 +63,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     private FloatingActionButton fb;
     private Dialog addDialog, delDialog;
     EditText baseName, baseName1, basePosition, baseCode, baseLatitude, baseLongitude;
+
     //覆盖物相关
     private BitmapDescriptor mMaker;
     private RelativeLayout mMakerLy;
@@ -72,23 +79,27 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         SDKInitializer.initialize(getActivity().getApplicationContext());
         v = inflater.inflate(R.layout.fragment_base, container, false);
+        //碎片中显示菜单
+        setHasOptionsMenu(true);
         //初始化地图
         initView();
         //初始化实验站位置
         initMaker();
         //初始化数据
         initData();
-
+        //显示试验站
         showBase();
-        //监听点击事件
+        //监听试验站点击事件
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Bundle extraInfo = marker.getExtraInfo();
-                BaseInfo info = (BaseInfo) extraInfo.getSerializable("info");
+                final BaseInfo info = (BaseInfo) extraInfo.getSerializable("info");
                 ImageView iv = (ImageView) mMakerLy.findViewById(R.id.id_info_img);
                 TextView name = (TextView) mMakerLy.findViewById(R.id.id_info_name);
-                fb = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+                Button infoButton = (Button) mMakerLy.findViewById(R.id.info_button);
+                Button videoButton = (Button) mMakerLy.findViewById(R.id.video_button);
+
 
                 iv.setImageResource(R.mipmap.nanxiao);
                 name.setText(info.getBaseName());
@@ -105,6 +116,32 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
                 mBaiduMap.showInfoWindow(infoWindow);
                 mMakerLy.setVisibility(View.VISIBLE);
                 fb.setVisibility(View.GONE);
+
+                infoButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent();
+                        intent.setClass(getActivity(),
+                                BaseDataActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("BaseInfo", info);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
+
+                videoButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent1 = new Intent();
+                        intent1.setClass(getActivity(),
+                                BaseVideoActivity.class);
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putSerializable("BaseInfo", info);
+                        intent1.putExtras(bundle1);
+                        startActivity(intent1);
+                    }
+                });
                 return true;
             }
         });
@@ -112,13 +149,42 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onMapClick(LatLng latLng) {
                 mMakerLy.setVisibility(View.GONE);
-                fb.setVisibility(View.VISIBLE);
+                if(fb.getVisibility() == View.GONE){
+                    fb.setVisibility(View.VISIBLE);
+                }
                 mBaiduMap.hideInfoWindow();
             }
 
             @Override
             public boolean onMapPoiClick(MapPoi mapPoi) {
                 return false;
+            }
+        });
+        mBaiduMap.setOnMapLongClickListener(new BaiduMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                PopupMenu popupMenu = new PopupMenu(getActivity(), mMapView);
+                popupMenu.getMenuInflater().inflate(R.menu.baselist, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_addBase:
+                                addBaseDialog();// 添加基地的数据到数据库中
+                                break;
+                            case R.id.action_deleteBase:
+                                deleteBaseDialog();// 删除基地数据
+                                break;
+                            case android.R.id.home:// 点击返回图标事件
+                                getActivity().finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
             }
         });
         return v;
@@ -157,13 +223,14 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
 
     private void initView() {
         mMapView = (MapView) v.findViewById(R.id.bmapView);
+        fb = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         mBaiduMap = mMapView.getMap();
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);
         mBaiduMap.setMapStatus(msu);
     }
 
     /**
-     * 添加覆盖物
+     * 显示试验站
      */
 
     private void showBase() {
@@ -187,6 +254,14 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
         MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latlng);
         mBaiduMap.setMapStatus(msu);
     }
+
+    //选项菜单创建
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.baselist,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
